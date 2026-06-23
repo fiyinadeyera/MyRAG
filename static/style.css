@@ -1,16 +1,16 @@
 /* ===== Theme ===== */
 :root {
-  --color-accent: #0d9488;
-  --color-accent-hover: #0f766e;
-  --color-text-primary: #111827;
-  --color-text-secondary: #374151;
-  --color-text-muted: #6b7280;
-  --color-border: #e5e7eb;
-  --color-background: #ffffff;
-  --color-surface: #f9fafb;
-  --color-error: #b91c1c;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-border: #1e293b;
+  --color-background: #020617;
+  --color-surface: #0f172a;
+  --color-error: #f87171;
 
-  --font-body: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Satoshi', system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "SF Mono", "Roboto Mono", Consolas, monospace;
 }
 
@@ -70,7 +70,8 @@ h1 {
   max-width: 360px;
   padding: 32px 24px;
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 12px;
+  background: var(--color-surface);
 }
 
 .field-input {
@@ -81,6 +82,8 @@ h1 {
   border-radius: 6px;
   margin-bottom: 24px;
   min-height: 44px;
+  background: var(--color-background);
+  color: var(--color-text-primary);
 }
 
 .field-input:focus {
@@ -188,6 +191,8 @@ h1 {
   resize: none;
   min-height: 44px;
   max-height: 160px;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
 }
 
 .chat-input:focus {
