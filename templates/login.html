@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyRAG: Sign in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="auth-page">
+    <form class="auth-card" method="POST" action="{{ url_for('login') }}">
+      <p class="label">MyRAG</p>
+      <h1>Sign in</h1>
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      <label class="field-label" for="password">Password</label>
+      <input class="field-input" type="password" id="password" name="password" autofocus required>
+      <button class="btn-primary" type="submit">Continue</button>
+    </form>
+  </main>
+</body>
+</html>
