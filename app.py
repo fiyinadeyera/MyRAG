@@ -57,11 +57,25 @@ def index():
     return render_template("index.html")
 
 
+MAX_HISTORY_MESSAGES = 10
+
+
+def build_history_messages(raw_history):
+    messages = []
+    for turn in raw_history[-MAX_HISTORY_MESSAGES:]:
+        role = turn.get("role")
+        content = (turn.get("content") or "").strip()
+        if role in ("user", "assistant") and content:
+            messages.append((("human" if role == "user" else "assistant"), content))
+    return messages
+
+
 @app.route("/api/chat", methods=["POST"])
 @login_required
 def chat():
     data = request.get_json(silent=True) or {}
     question = (data.get("question") or "").strip()
+    history = build_history_messages(data.get("history") or [])
     if not question:
         return {"error": "Question is required."}, 400
 
@@ -74,6 +88,7 @@ def chat():
     user_message = f"Context from documents:\n\n{context}\n\nQuestion: {question}"
     response = llm.invoke([
         ("system", SYSTEM_PROMPT),
+        *history,
         ("human", user_message),
     ])
 

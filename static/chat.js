@@ -2,6 +2,8 @@ const form = document.getElementById("chat-form");
 const input = document.getElementById("question-input");
 const messages = document.getElementById("messages");
 
+const history = [];
+
 function addMessage(text, role) {
   const el = document.createElement("div");
   el.className = `message message-${role}`;
@@ -25,7 +27,7 @@ form.addEventListener("submit", async (event) => {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({ question, history }),
     });
     const data = await response.json();
 
@@ -35,6 +37,8 @@ form.addEventListener("submit", async (event) => {
     }
 
     pending.textContent = data.answer;
+    history.push({ role: "user", content: question });
+    history.push({ role: "assistant", content: data.answer });
   } catch (err) {
     pending.textContent = "Could not reach the server. Try again.";
   }
