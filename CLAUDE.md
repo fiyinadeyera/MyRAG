@@ -31,7 +31,7 @@ User-facing positioning: "A password-protected AI about me. Ask questions and ge
 
 ### Key technical decisions
 
-- Claude model: Sonnet 4.5 (via LangChain ChatAnthropic). Candidate for downgrade to Haiku 4.5.
+- Claude model: Haiku 4.5 (via LangChain ChatAnthropic).
 - Embeddings: Pinecone hosted inference (multilingual-e5-large, 1024 dimensions). No local model needed.
 - Vector store: Pinecone (serverless, AWS us-east-1, cosine similarity).
 - Top 4 chunks retrieved per query via similarity search.

@@ -20,7 +20,7 @@ SYSTEM_PROMPT = (
     "general knowledge, and do not make anything up."
 )
 
-llm = ChatAnthropic(model="claude-sonnet-4-5", temperature=0, api_key=os.environ["ANTHROPIC_API_KEY"])
+llm = ChatAnthropic(model="claude-haiku-4-5", temperature=0, api_key=os.environ["ANTHROPIC_API_KEY"])
 vectorstore = get_vectorstore()
 
 
